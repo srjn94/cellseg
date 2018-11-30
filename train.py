@@ -31,7 +31,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--model_dir', default='experiments/base_model')
 parser.add_argument('--data_dir', default='data/kaggle')
 parser.add_argument('--restore_from', default=None)
-
+parser.add_argument('--overwrite', default=False)
 if __name__ == "__main__":
     random.seed(0)
     tf.set_random_seed(0)
@@ -44,7 +44,8 @@ if __name__ == "__main__":
 
     model_dir_has_best_weights = os.path.isdir(os.path.join(args.model_dir, "best_weights"))
     overwriting = model_dir_has_best_weights and args.restore_from is None
-    assert not overwriting
+    if not args.overwrite:
+        assert not overwriting
 
     set_logger(os.path.join(args.model_dir, 'train.log'))
     

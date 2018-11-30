@@ -3,6 +3,9 @@ experiments/*/train_summaries/*
 experiments/*/eval_summaries/*
 experiments/*/last_weights/*
 experiments/*/best_weights/*
+experiments/*/metrics_eval_best_weights.json
+experiments/*/metrics_eval_last_weights.json
+experiments/*/train.log
 .Python
 .DS_Store
 .env/

@@ -41,3 +41,38 @@
 2018-11-30 03:03:28,961:INFO: - Train metrics: macro_f1_score: 0.97656977 ; loss: 0.02119357
 2018-11-30 03:03:30,589:INFO: - Eval metrics: macro_f1_score: 0.12682924 ; loss: 0.23651256
 2018-11-30 03:03:30,767:INFO: - Found new best macro_f1_score, saving in experiments/base_model/best_weights/after-epoch-10
+2018-11-30 22:23:02,931:INFO: Creating the datasets...
+2018-11-30 22:57:57,472:INFO: Creating the datasets...
+2018-11-30 23:01:12,871:INFO: Creating the datasets...
+2018-11-30 23:03:57,766:INFO: Creating the datasets...
+2018-11-30 23:03:58,244:INFO: Creating the model...
+2018-11-30 23:03:59,440:INFO: Starting training for 10 epoch(s)
+2018-11-30 23:04:00,931:INFO: Epoch 1/10
+2018-11-30 23:07:33,204:INFO: Creating the datasets...
+2018-11-30 23:07:33,725:INFO: Creating the model...
+2018-11-30 23:07:34,942:INFO: Starting training for 10 epoch(s)
+2018-11-30 23:07:36,377:INFO: Epoch 1/10
+2018-11-30 23:07:47,664:INFO: - Train metrics: macro_f1_score: 0.11812191 ; loss: 0.41680565
+2018-11-30 23:07:48,905:INFO: - Eval metrics: macro_f1_score: 0.17142855 ; loss: 0.33236924
+2018-11-30 23:07:49,086:INFO: - Found new best macro_f1_score, saving in experiments/00_base_model/best_weights/after-epoch-1
+2018-11-30 23:07:49,086:INFO: Epoch 2/10
+2018-11-30 23:07:57,338:INFO: - Train metrics: macro_f1_score: 0.23594932 ; loss: 0.19633171
+2018-11-30 23:07:58,353:INFO: - Eval metrics: macro_f1_score: 0.27131775 ; loss: 0.22203861
+2018-11-30 23:07:58,537:INFO: - Found new best macro_f1_score, saving in experiments/00_base_model/best_weights/after-epoch-2
+2018-11-30 23:07:58,541:INFO: Epoch 3/10
+2018-11-30 23:08:06,821:INFO: - Train metrics: macro_f1_score: 0.37726834 ; loss: 0.14681664
+2018-11-30 23:08:07,848:INFO: - Eval metrics: macro_f1_score: 0.10682893 ; loss: 0.20494522
+2018-11-30 23:08:07,849:INFO: Epoch 4/10
+2018-11-30 23:08:16,079:INFO: - Train metrics: macro_f1_score: 0.56377542 ; loss: 0.10856266
+2018-11-30 23:08:17,094:INFO: - Eval metrics: macro_f1_score: 0.10682893 ; loss: 0.18574665
+2018-11-30 23:08:17,095:INFO: Epoch 5/10
+2018-11-30 23:08:25,316:INFO: - Train metrics: macro_f1_score: 0.76442122 ; loss: 0.07855905
+2018-11-30 23:08:26,313:INFO: - Eval metrics: macro_f1_score: 0.10682893 ; loss: 0.18798955
+2018-11-30 23:08:26,314:INFO: Epoch 6/10
+2018-11-30 23:08:34,371:INFO: - Train metrics: macro_f1_score: 0.84004194 ; loss: 0.06087516
+2018-11-30 23:08:35,372:INFO: - Eval metrics: macro_f1_score: 0.14814810 ; loss: 0.20384203
+2018-11-30 23:08:35,373:INFO: Epoch 7/10
+2018-11-30 23:09:40,051:INFO: Creating the datasets...
+2018-11-30 23:09:40,540:INFO: Creating the model...
+2018-11-30 23:09:41,767:INFO: Starting training for 10 epoch(s)
+2018-11-30 23:09:43,166:INFO: Epoch 1/10
