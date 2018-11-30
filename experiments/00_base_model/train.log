@@ -1,0 +1,43 @@
+2018-11-30 02:59:50,004:INFO: Creating the datasets...
+2018-11-30 02:59:50,553:INFO: Creating the model...
+2018-11-30 02:59:51,672:INFO: Starting training for 10 epoch(s)
+2018-11-30 02:59:52,598:INFO: Epoch 1/10
+2018-11-30 03:00:11,719:INFO: - Train metrics: macro_f1_score: 0.11299912 ; loss: 0.41184020
+2018-11-30 03:00:13,618:INFO: - Eval metrics: macro_f1_score: 0.11764704 ; loss: 0.33473787
+2018-11-30 03:00:13,823:INFO: - Found new best macro_f1_score, saving in experiments/base_model/best_weights/after-epoch-1
+2018-11-30 03:00:13,824:INFO: Epoch 2/10
+2018-11-30 03:00:32,406:INFO: - Train metrics: macro_f1_score: 0.22348091 ; loss: 0.19405682
+2018-11-30 03:00:34,159:INFO: - Eval metrics: macro_f1_score: 0.11764704 ; loss: 0.22429064
+2018-11-30 03:00:34,342:INFO: - Found new best macro_f1_score, saving in experiments/base_model/best_weights/after-epoch-2
+2018-11-30 03:00:34,343:INFO: Epoch 3/10
+2018-11-30 03:00:52,951:INFO: - Train metrics: macro_f1_score: 0.40018526 ; loss: 0.14135978
+2018-11-30 03:00:54,576:INFO: - Eval metrics: macro_f1_score: 0.11764704 ; loss: 0.21003972
+2018-11-30 03:00:54,758:INFO: - Found new best macro_f1_score, saving in experiments/base_model/best_weights/after-epoch-3
+2018-11-30 03:00:54,759:INFO: Epoch 4/10
+2018-11-30 03:01:13,514:INFO: - Train metrics: macro_f1_score: 0.62843096 ; loss: 0.10124350
+2018-11-30 03:01:15,208:INFO: - Eval metrics: macro_f1_score: 0.11764704 ; loss: 0.20690270
+2018-11-30 03:01:15,397:INFO: - Found new best macro_f1_score, saving in experiments/base_model/best_weights/after-epoch-4
+2018-11-30 03:01:15,398:INFO: Epoch 5/10
+2018-11-30 03:01:35,708:INFO: - Train metrics: macro_f1_score: 0.79765815 ; loss: 0.07250216
+2018-11-30 03:01:37,968:INFO: - Eval metrics: macro_f1_score: 0.11764704 ; loss: 0.22236198
+2018-11-30 03:01:38,191:INFO: - Found new best macro_f1_score, saving in experiments/base_model/best_weights/after-epoch-5
+2018-11-30 03:01:38,192:INFO: Epoch 6/10
+2018-11-30 03:02:02,699:INFO: - Train metrics: macro_f1_score: 0.89523166 ; loss: 0.05340054
+2018-11-30 03:02:05,360:INFO: - Eval metrics: macro_f1_score: 0.11764704 ; loss: 0.21689248
+2018-11-30 03:02:05,749:INFO: - Found new best macro_f1_score, saving in experiments/base_model/best_weights/after-epoch-6
+2018-11-30 03:02:05,752:INFO: Epoch 7/10
+2018-11-30 03:02:26,870:INFO: - Train metrics: macro_f1_score: 0.93407303 ; loss: 0.04050565
+2018-11-30 03:02:28,585:INFO: - Eval metrics: macro_f1_score: 0.11764704 ; loss: 0.20642820
+2018-11-30 03:02:28,793:INFO: - Found new best macro_f1_score, saving in experiments/base_model/best_weights/after-epoch-7
+2018-11-30 03:02:28,794:INFO: Epoch 8/10
+2018-11-30 03:02:47,674:INFO: - Train metrics: macro_f1_score: 0.95371842 ; loss: 0.03154448
+2018-11-30 03:02:49,319:INFO: - Eval metrics: macro_f1_score: 0.11764704 ; loss: 0.22225869
+2018-11-30 03:02:49,498:INFO: - Found new best macro_f1_score, saving in experiments/base_model/best_weights/after-epoch-8
+2018-11-30 03:02:49,498:INFO: Epoch 9/10
+2018-11-30 03:03:08,248:INFO: - Train metrics: macro_f1_score: 0.96874011 ; loss: 0.02562443
+2018-11-30 03:03:09,944:INFO: - Eval metrics: macro_f1_score: 0.11764704 ; loss: 0.23063247
+2018-11-30 03:03:10,131:INFO: - Found new best macro_f1_score, saving in experiments/base_model/best_weights/after-epoch-9
+2018-11-30 03:03:10,132:INFO: Epoch 10/10
+2018-11-30 03:03:28,961:INFO: - Train metrics: macro_f1_score: 0.97656977 ; loss: 0.02119357
+2018-11-30 03:03:30,589:INFO: - Eval metrics: macro_f1_score: 0.12682924 ; loss: 0.23651256
+2018-11-30 03:03:30,767:INFO: - Found new best macro_f1_score, saving in experiments/base_model/best_weights/after-epoch-10

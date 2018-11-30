@@ -1,0 +1,44 @@
+{
+    "train_size": 30761,
+    "dev_size": 311,
+
+    "learning_rate": 1e-3,
+    "batch_size": 25,
+    "num_epochs": 10,
+    
+    "use_batch_norm": true,
+    
+    "image_size": 512,
+    "num_labels": 28,
+    "conv_blocks": [
+        {
+            "conv": {"filters": 16, "kernel_size": 3, "padding": "same", "kernel_initializer": "${tf.contrib.layers.xavier_initializer()}"},
+            "bn": {"momentum": 0.99, "gamma_initializer": "${tf.contrib.layers.xavier_initializer()}"},
+            "pool": {"pool_size": 2, "strides": 2}
+        },
+        {
+            "conv": {"filters": 32, "kernel_size": 3, "padding": "same", "kernel_initializer": "${tf.contrib.layers.xavier_initializer()}"},
+            "bn": {"momentum": 0.99, "gamma_initializer": "${tf.contrib.layers.xavier_initializer()}"},
+            "pool": {"pool_size": 2, "strides": 2}
+        },
+        {
+            "conv": {"filters": 64, "kernel_size": 3, "padding": "same", "kernel_initializer": "${tf.contrib.layers.xavier_initializer()}"},
+            "bn": {"momentum": 0.99, "gamma_initializer": "${tf.contrib.layers.xavier_initializer()}"},
+            "pool": {"pool_size": 2, "strides": 2}
+        },
+        {
+            "conv": {"filters": 128, "kernel_size": 3, "padding": "same", "kernel_initializer": "${tf.contrib.layers.xavier_initializer()}"},
+            "bn": {"momentum": 0.99, "gamma_initializer": "${tf.contrib.layers.xavier_initializer()}"},
+            "pool": {"pool_size": 2, "strides": 2}
+        }
+    ],
+    "dense_blocks": [
+        {
+            "dense": {"units": 128, "kernel_initializer": "${tf.contrib.layers.xavier_initializer()}"},
+            "bn": {"momentum": 0.99, "gamma_initializer": "${tf.contrib.layers.xavier_initializer()}"}
+        }
+    ],
+    
+    "num_parallel_calls": 4,
+    "save_summary_steps": 1
+}

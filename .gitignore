@@ -1,0 +1,9 @@
+data/*
+experiments/*/train_summaries/*
+experiments/*/eval_summaries/*
+experiments/*/last_weights/*
+experiments/*/best_weights/*
+.Python
+.DS_Store
+.env/
+*/__pycache__/*
