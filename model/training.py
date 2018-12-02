@@ -86,6 +86,11 @@ def train_and_evaluate(train_model_spec, eval_model_spec, model_dir, params, res
         eval_writer = tf.summary.FileWriter(os.path.join(model_dir, 'eval_summaries'), sess.graph)
 
         best_eval_macro_f1_score = 0.0
+
+        if begin_at_epoch == 0:
+            num_steps = (params.eval_size + params.batch_size - 1) // params.batch_size
+            evaluate_sess(sess, eval_model_spec, num_steps, eval_writer)
+
         for epoch in range(begin_at_epoch, begin_at_epoch + params.num_epochs):
             # Run one epoch
             logging.info("Epoch {}/{}".format(epoch + 1, begin_at_epoch + params.num_epochs))

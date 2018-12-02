@@ -50,6 +50,11 @@ def model_fn(mode, inputs, params, reuse=False):
     else:
         raise
 
+    if "l2_reg_weight" in params.__dict__:
+        # ignore biases and batch-norm means
+        l2_loss = tf.add_n([tf.nn.l2_loss(v) for v in tf.trainable_variables() if "bias" not in v.name and "beta" not in v.name])
+        loss = loss + params.l2_reg_weight * l2_loss
+
     true_positives = tf.count_nonzero(predictions * labels)
     true_negatives = tf.count_nonzero((predictions - 1) * (labels - 1))
     false_positives = tf.count_nonzero(predictions * (labels - 1))
