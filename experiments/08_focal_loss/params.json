@@ -8,6 +8,12 @@
     
     "use_batch_norm": true,
 
+    "loss": {
+        "name": "focal",
+        "alpha": 0.25,
+        "gamma": 2
+    },
+    
     "image_size": 512,
     "num_labels": 28,
     "conv_blocks": [

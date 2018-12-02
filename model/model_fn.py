@@ -1,5 +1,6 @@
 from functools import reduce
 import tensorflow as tf
+from tensorflow.python.ops import array_ops
 
 def build_model(is_training, inputs, params):
     images = inputs['images']
@@ -29,13 +30,26 @@ def build_model(is_training, inputs, params):
 def model_fn(mode, inputs, params, reuse=False):
     is_training = (mode == 'train')
     labels = inputs['labels']
-    labels = tf.cast(labels, tf.int64)
+    labels = tf.cast(labels, tf.float32)
 
     with tf.variable_scope("model", reuse=reuse):
         logits = build_model(is_training, inputs, params)
-        predictions = tf.cast(tf.greater(logits, 0), tf.int64)
+        predictions = tf.cast(tf.greater(logits, 0), tf.float32)
     
-    loss = tf.losses.sigmoid_cross_entropy(labels, logits)
+    if "loss" not in params.__dict__ or params.loss["name"] == "sigmoid":
+        loss = tf.losses.sigmoid_cross_entropy(labels, logits)
+    #source: https://github.com/ailias/Focal-Loss-implement-on-Tensorflow/blob/master/focal_loss.py
+    elif params.loss["name"] == "focal":
+        sigmoid_p = tf.nn.sigmoid(logits)
+        zeros = array_ops.zeros_like(sigmoid_p, dtype=sigmoid_p.dtype)
+        pos_p_sub = array_ops.where(labels > zeros, labels - sigmoid_p, zeros)
+        neg_p_sub = array_ops.where(labels > zeros, zeros, sigmoid_p)
+        per_entry_cross_ent = -params.loss["alpha"]*(pos_p_sub**params.loss["gamma"])*tf.log(tf.clip_by_value(sigmoid_p,1e-8,1.0)) \
+                              -(1-params.loss["alpha"])*(neg_p_sub**params.loss["gamma"])*tf.log(tf.clip_by_value(1.0-sigmoid_p,1e-8,1.0))
+        loss = tf.reduce_sum(per_entry_cross_ent)
+    else:
+        raise
+
     true_positives = tf.count_nonzero(predictions * labels)
     true_negatives = tf.count_nonzero((predictions - 1) * (labels - 1))
     false_positives = tf.count_nonzero(predictions * (labels - 1))
@@ -65,7 +79,7 @@ def model_fn(mode, inputs, params, reuse=False):
 
     tf.summary.scalar("loss", loss)
     tf.summary.scalar("macro_f1_score", macro_f1_score)
-    tf.summary.image("train_image", inputs["images"])
+#    tf.summary.image("train_image", inputs["images"])
 
     model_spec = inputs
     model_spec['variable_init_op'] = tf.global_variables_initializer()
