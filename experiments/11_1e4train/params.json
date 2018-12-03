@@ -2,46 +2,48 @@
     "train_size": 30450,
     "dev_size": 311,
 
-    "learning_rate": 1e-3,
-    "batch_size": 80,
-    "num_epochs": 10,
+    "learning_rate": 1e-4,
+    "batch_size": 100,
+    "num_epochs": 20,
     
     "use_batch_norm": true,
+    "use_dropout": true,
+    "use_l2_reg": true,
+    "l2_reg_weight": 0.001,
 
-    "loss": {
-        "name": "focal",
-        "alpha": 0.25,
-        "gamma": 2
-    },
-    
     "image_size": 512,
     "num_labels": 28,
     "conv_blocks": [
         {
             "conv": {"filters": 16, "kernel_size": 3, "padding": "same", "kernel_initializer": "${tf.contrib.layers.xavier_initializer()}"},
             "bn": {"momentum": 0.99, "gamma_initializer": "${tf.contrib.layers.xavier_initializer()}"},
-            "pool": {"pool_size": 2, "strides": 2}
+            "pool": {"pool_size": 2, "strides": 2},
+            "dropout": {"rate": 0.1}
         },
         {
             "conv": {"filters": 32, "kernel_size": 3, "padding": "same", "kernel_initializer": "${tf.contrib.layers.xavier_initializer()}"},
             "bn": {"momentum": 0.99, "gamma_initializer": "${tf.contrib.layers.xavier_initializer()}"},
-            "pool": {"pool_size": 2, "strides": 2}
+            "pool": {"pool_size": 2, "strides": 2},
+            "dropout": {"rate": 0.1}
         },
         {
             "conv": {"filters": 64, "kernel_size": 3, "padding": "same", "kernel_initializer": "${tf.contrib.layers.xavier_initializer()}"},
             "bn": {"momentum": 0.99, "gamma_initializer": "${tf.contrib.layers.xavier_initializer()}"},
-            "pool": {"pool_size": 2, "strides": 2}
+            "pool": {"pool_size": 2, "strides": 2},
+            "dropout": {"rate": 0.1}
         },
         {
             "conv": {"filters": 128, "kernel_size": 3, "padding": "same", "kernel_initializer": "${tf.contrib.layers.xavier_initializer()}"},
             "bn": {"momentum": 0.99, "gamma_initializer": "${tf.contrib.layers.xavier_initializer()}"},
-            "pool": {"pool_size": 2, "strides": 2}
+            "pool": {"pool_size": 2, "strides": 2},
+            "dropout": {"rate": 0.1}
         }
     ],
     "dense_blocks": [
         {
             "dense": {"units": 128, "kernel_initializer": "${tf.contrib.layers.xavier_initializer()}"},
-            "bn": {"momentum": 0.99, "gamma_initializer": "${tf.contrib.layers.xavier_initializer()}"}
+            "bn": {"momentum": 0.99, "gamma_initializer": "${tf.contrib.layers.xavier_initializer()}"},
+            "dropout": {"rate": 0.5}
         }
     ],
     

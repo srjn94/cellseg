@@ -1,5 +1,5 @@
 {
-    "train_size": 30761,
+    "train_size": 30450,
     "dev_size": 311,
 
     "learning_rate": 1e-3,

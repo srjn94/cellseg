@@ -15,12 +15,16 @@ def build_model(is_training, inputs, params):
             out = tf.nn.relu(out)
             if "pool" in conv_block:
                 out = tf.layers.max_pooling2d(out, **conv_block["pool"])
+            if params.use_dropout:
+                out = tf.layers.dropout(out, **conv_block["dropout"], training=is_training)
     out = tf.contrib.layers.flatten(out)
     for i, dense_block in enumerate(params.dense_blocks):
         with tf.variable_scope("dense_block_{}".format(i+1)):
             out = tf.layers.dense(out, **dense_block["dense"])
             if params.use_batch_norm:
                 out = tf.layers.batch_normalization(out, **dense_block["bn"], training=is_training)
+            if params.use_dropout:
+                out = tf.layers.dropout(out, **dense_block["dropout"], training=is_training)
             out = tf.nn.relu(out)
     with tf.variable_scope("output_block"):
         logits = tf.layers.dense(out, params.num_labels)
@@ -50,7 +54,7 @@ def model_fn(mode, inputs, params, reuse=False):
     else:
         raise
 
-    if "l2_reg_weight" in params.__dict__:
+    if params.use_l2_reg:
         # ignore biases and batch-norm means
         l2_loss = tf.add_n([tf.nn.l2_loss(v) for v in tf.trainable_variables() if "bias" not in v.name and "beta" not in v.name])
         loss = loss + params.l2_reg_weight * l2_loss
