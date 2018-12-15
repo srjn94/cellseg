@@ -46,6 +46,7 @@ def input_fn(mode, images_dir, names, labels, params):
         "images": images,
         "labels": labels,
         "iterator_init_op": iterator_init_op
+
     }
 
     return inputs

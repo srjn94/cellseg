@@ -7,6 +7,8 @@
     "num_epochs": 10,
     
     "use_batch_norm": true,
+    "use_dropout": false,
+    "use_l2_reg": true,
     "l2_reg_weight": 0.001,
 
     "image_size": 512,

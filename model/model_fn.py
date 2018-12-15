@@ -59,13 +59,21 @@ def model_fn(mode, inputs, params, reuse=False):
         l2_loss = tf.add_n([tf.nn.l2_loss(v) for v in tf.trainable_variables() if "bias" not in v.name and "beta" not in v.name])
         loss = loss + params.l2_reg_weight * l2_loss
 
-    true_positives = tf.count_nonzero(predictions * labels)
-    true_negatives = tf.count_nonzero((predictions - 1) * (labels - 1))
-    false_positives = tf.count_nonzero(predictions * (labels - 1))
-    false_negatives = tf.count_nonzero((predictions - 1) * labels)
-    precision = true_positives / (true_positives + false_positives)
-    recall = true_positives / (true_positives + false_negatives)
-    macro_f1_score = 2 * precision * recall / (precision + recall)
+
+    TP = tf.count_nonzero(predictions * labels, axis=0)
+    TN = tf.count_nonzero((predictions - 1) * (labels - 1), axis=0)
+    FP = tf.count_nonzero(predictions * (labels - 1), axis=0)
+    FN = tf.count_nonzero((predictions - 1) * labels, axis=0)
+
+    accuracy = (TP + TN) / (TP + TN + FP + FN)
+    precision = TP / (TP + FP)
+    recall = TP / (TP + FN)
+    f1_score = 2 * precision * recall / (precision + recall)
+
+    macro_accuracy = tf.reduce_mean(accuracy)
+    macro_precision = tf.reduce_mean(precision)
+    macro_recall = tf.reduce_mean(recall)
+    macro_f1_score = tf.reduce_mean(f1_score)
 
     if is_training:
         optimizer = tf.train.AdamOptimizer(params.learning_rate)
@@ -89,11 +97,11 @@ def model_fn(mode, inputs, params, reuse=False):
     tf.summary.scalar("loss", loss)
     tf.summary.scalar("macro_f1_score", macro_f1_score)
 #    tf.summary.image("train_image", inputs["images"])
-
     model_spec = inputs
     model_spec['variable_init_op'] = tf.global_variables_initializer()
     model_spec['predictions'] = predictions
     model_spec['loss'] = loss
+    model_spec['f1_score'] = f1_score
     model_spec['macro_f1_score'] = macro_f1_score
     model_spec['metrics_init_op'] = metrics_init_op
     model_spec['metrics'] = metrics

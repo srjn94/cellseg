@@ -9,4 +9,4 @@ experiments/*/train.log
 .Python
 .DS_Store
 .env/
-*/__pycache__/*
+*__pycache__/*

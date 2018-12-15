@@ -76,3 +76,4 @@ def evaluate(model_spec, model_dir, params, restore_from):
         metrics_name = '_'.join(restore_from.split('/'))
         save_path = os.path.join(model_dir, "metrics_test_{}.json".format(metrics_name))
         save_dict_to_json(metrics, save_path)
+

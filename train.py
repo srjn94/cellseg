@@ -12,7 +12,7 @@ from model.utils import set_logger
 from model.utils import save_dict_to_json
 from model.training import train_and_evaluate
 
-def import_names_and_labels(data_dir, name, num_labels, sample_size):
+def import_names_and_labels(data_dir, name, num_labels, sample_size=None):
     path = os.path.join(data_dir, name + ".csv")
     pairs = []
     with open(path, "r") as f:
@@ -23,7 +23,10 @@ def import_names_and_labels(data_dir, name, num_labels, sample_size):
             label = [int(i) for i in label.split()]
             label = [int(i in label) for i in range(num_labels)]
             pairs.append((name, label))
-    pairs = random.sample(pairs, sample_size)
+    if sample_size is None:
+        random.shuffle(pairs)
+    else:
+        pairs = random.sample(pairs, sample_size)
     names, labels = zip(*pairs)
     return names, labels
 
